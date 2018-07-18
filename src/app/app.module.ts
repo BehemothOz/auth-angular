@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ClarityModule } from "@clr/angular";
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -27,7 +28,8 @@ import { TokenInterceptorService } from './shared/token-interceptor.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ClarityModule
   ],
   providers: [AuthService, AuthGuard, EventService,
     { provide: HTTP_INTERCEPTORS,
