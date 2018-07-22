@@ -36,20 +36,19 @@
     </div>
     <!-- nav -->
     <div class="header-nav">
-      <a href="javascript://" class="active nav-link nav-text">Dashboard</a>
-      <a href="javascript://" class="nav-link nav-text">Interactive Analytics</a>
+      <a class="active nav-link nav-text" routerLink="/events" routerLinkActive="active">Public page</a>
+      <a class="nav-link nav-text" routerLink="/special" routerLinkActive="active">Private page</a>
     </div>
     <!-- action -->
     <div class="header-actions">
-      <a href="..." class="nav-link nav-text">Log Out</a>
+      <a class="nav-link nav-text" routerLink="/login" *ngIf="!_auth.loggedIn()" routerLinkActive="active">Login</a>
+      <a class="nav-link nav-text" routerLink="/register" *ngIf="!_auth.loggedIn()" routerLinkActive="active">Register</a>
+      <a class="nav-link nav-text" *ngIf="_auth.loggedIn()" (click)="_auth.logoutUser()">LogOut</a>
     </div>
   </header>
   <div class="content-container">
-      <div class="content-area">
-          ...
-      </div>
-      <nav class="sidenav">
-          ...
-      </nav>
+    <div class="content-area">
+        <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
