@@ -1,4 +1,4 @@
-<h4>This is events</h4>
+<h2>This is public events</h2>
 
 <div class="row">
   <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" *ngFor="let event of events">
@@ -11,21 +11,12 @@
           {{ event.description }}
         </div>
         <div class="card-text">
-          {{ event.date | date:'shortDate' }}
+          Date: {{ event.date | date:'shortDate' }}
         </div>
       </div>
       <div class="card-footer">
-        <button class="btn btn-sm btn-link">Footer Action 1</button>
-        <button class="btn btn-sm btn-link">Footer Action 2</button>
+        <button class="btn btn-primary">Action</button>
       </div>
     </div>
   </div>
 </div>
-<!-- <ul>
-  <li *ngFor="let event of events">
-    <span>{{ event.name }}</span> |
-    <span>{{ event.description }}</span> |
-    <span>{{ event.date | date:'shortDate' }}</span> |
-    <button>Buy</button>
-  </li>
-</ul> -->
