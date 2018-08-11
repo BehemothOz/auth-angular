@@ -20,17 +20,14 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser() {
-    console.log(this.loginUserData);
     this.sendBtnState = ClrLoadingState.LOADING;
     this._auth.loginUser(this.loginUserData).subscribe(
       res => {
-        console.log(res);
         localStorage.setItem(`token`, res.token);
         this._router.navigate([`/special`]);
         this.sendBtnState = ClrLoadingState.SUCCESS;
       },
       err => {
-        console.log(err);
         this.authError = true;
         this.sendBtnState = ClrLoadingState.DEFAULT;
       }
