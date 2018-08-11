@@ -46,9 +46,6 @@
       <a class="nav-link nav-text" *ngIf="_auth.loggedIn()" (click)="_auth.logoutUser()">LogOut</a>
     </div>
   </header>
-  <div class="content-container">
-    <div class="content-area">
-        <router-outlet></router-outlet>
-    </div>
-  </div>
+
+  <router-outlet></router-outlet>
 </div>
