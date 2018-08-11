@@ -1,30 +1,85 @@
 <div class="login-wrapper">
   <form class="login">
     <section class="title">
-      <h3 class="welcome">Welcome to</h3>
-      Company Product Name
-      <h5 class="hint">Use your Company ID to sign in or create one now</h5>
+      <!-- <h3 class="welcome">Welcome to</h3> -->
+      Register
+      <h5 class="hint">Enter your details to continue</h5>
     </section>
-    <div class="login-group">
-      <div class="auth-source select">
-        <select id="login-auth-source-1">
-          <option>Local Users</option>
-          <option>Administrator</option>
-        </select>
-      </div>
-      <input class="username" type="text" id="login_username" placeholder="Username">
-      <input class="password" type="password" id="login_password" placeholder="Password">
-      <div class="checkbox">
-        <input type="checkbox" id="rememberme">
-        <label for="rememberme">
-          Remember me
-        </label>
-      </div>
-      <div class="error active">
-        Invalid user name or password
-      </div>
-      <button type="submit" class="btn btn-primary">NEXT</button>
-      <a href="javascript://" class="signup">Sign up for a Company ID</a>
-    </div>
+
+      <!-- Email -->
+      <!-- <label
+        for="username"
+        aria-haspopup="true"
+        role="tooltip"
+        class="tooltip tooltip-validation invalid tooltip-md"
+        [class.invalid]="refUsername.invalid && (refUsername.dirty || refUsername.touched)">
+        <input
+          #refUsername="ngModel"
+          id="username"
+          class="username"
+          type="text"
+          name="username"
+          [(ngModel)]="email"
+          pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          placeholder="Email"
+          required>
+        <span class="tooltip-content">
+          <span *ngIf="refUsername.errors && refUsername.errors.required">Email is required!</span>
+          <span *ngIf="refUsername.errors && refUsername.errors.pattern">Incorrect symbols are used!</span>
+        </span>
+      </label> -->
+
+      <!-- Password -->
+      <!-- <label
+        for="password"
+        aria-haspopup="true"
+        role="tooltip"
+        class="tooltip tooltip-validation invalid tooltip-md"
+        [class.invalid]="refPassword.invalid && (refPassword.dirty || refPassword.touched)">
+        <input
+          #refPassword="ngModel"
+          id="password"
+          class="password"
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          placeholder="Password"
+          minlength="4"
+          required
+          (change)="refConfirm.control.updateValueAndValidity()">
+        <span class="tooltip-content">
+          <span *ngIf="refPassword.errors && refPassword.errors.required">Password is required!</span>
+          <span *ngIf="refPassword.errors && refPassword.errors.minlength">At least 4 characters!</span>
+        </span>
+      </label> -->
+
+      <!-- Re-Password -->
+      <!-- <label
+        for="confirm"
+        aria-haspopup="true"
+        role="tooltip"
+        class="tooltip tooltip-validation invalid tooltip-md"
+        [class.invalid]="refConfirm.invalid && (refConfirm.dirty || refConfirm.touched)">
+        <input
+          #refConfirm="ngModel"
+          id="confirm"
+          class="password"
+          type="password"
+          name="confirm"
+          [(ngModel)]="repeatPassword"
+          placeholder="Repeat password"
+          appConfirmEqualValidator="password"
+          required>
+        <span class="tooltip-content">
+          <span *ngIf="refConfirm.errors && refConfirm.errors.required">Re-Password is required!</span>
+          <span *ngIf="refConfirm.errors && refConfirm.errors.notEqual">Passwords no match!</span>
+        </span>
+      </label> -->
+
+      <!-- <button class="btn btn-primary" (click)="createUser()" [clrLoading]="sendBtnState"
+        [disabled]="refPhone.invalid || refUsername.invalid || refPassword.invalid || refConfirm.invalid">Next</button> -->
+
+      <a [routerLink]="['/sign-in']" class="signup">Go to sign in</a>
+    <!-- </div> -->
   </form>
 </div>
