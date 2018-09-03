@@ -9,23 +9,38 @@ import { ClrLoadingState } from '@clr/angular';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  registerUserData = {};
+  registerUserData = {
+    email: '',
+    password: '',
+    repeatPassword: ''
+  };
 
-  sendBtnState: ClrLoadingState = ClrLoadingState.DEFAULT;
+  registerError: boolean;
+
+  registerBtnState: ClrLoadingState = ClrLoadingState.DEFAULT;
 
   constructor(private _auth: AuthService, private _router: Router) {}
 
   ngOnInit() {}
 
   registerUser() {
-    console.log(this.registerUserData);
-    this._auth.registerUser(this.registerUserData).subscribe(
+    const data = {
+      email: this.registerUserData.email,
+      password: this.registerUserData.password
+    };
+
+    this.registerBtnState = ClrLoadingState.LOADING;
+
+    this._auth.registerUser(data).subscribe(
       res => {
-        console.log(res);
         localStorage.setItem('token', res.token);
         this._router.navigate([`/special`]);
+        this.registerBtnState = ClrLoadingState.SUCCESS;
       },
-      err => console.log(err)
+      err => {
+        this.registerError = true;
+        this.registerBtnState = ClrLoadingState.DEFAULT;
+      }
     );
   }
 }

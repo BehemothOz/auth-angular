@@ -21,7 +21,7 @@
           class="username"
           type="text"
           name="email"
-          [(ngModel)]="email"
+          [(ngModel)]="registerUserData.email"
           placeholder="Email"
           pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
           required
@@ -46,7 +46,7 @@
           class="password"
           type="password"
           name="password"
-          [(ngModel)]="password"
+          [(ngModel)]="registerUserData.password"
           placeholder="Password"
           minlength="4"
           required
@@ -72,7 +72,7 @@
           class="password"
           type="password"
           name="confirm"
-          [(ngModel)]="repeatPassword"
+          [(ngModel)]="registerUserData.repeatPassword"
           placeholder="Repeat password"
           appConfirmEqualValidator="password"
           required>
@@ -82,9 +82,13 @@
         </span>
       </label>
 
+      <div class="error active" [class.active]="registerError">
+        Oops, something went wrong. Try later!
+      </div>
+
       <button
         class="btn btn-primary"
-        (click)="createUser()"
+        (click)="registerUser()"
         [clrLoading]="sendBtnState"
         [disabled]="refEmail.invalid || refPassword.invalid || refConfirm.invalid"
       >
