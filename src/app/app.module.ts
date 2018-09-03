@@ -1,21 +1,28 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ClarityModule } from "@clr/angular";
+import { ClarityModule } from '@clr/angular';
 
+// Routing
+import { AppRoutingModule } from './app-routing.module';
+
+// Directive
+import { ConfirmEqualValidatorDirective } from './validators/confirmEqual';
+
+// Serivce
+import { AuthService } from './shared/auth.service';
+import { AuthGuard } from './shared/auth.guard';
+import { EventService } from './shared/event.service';
+import { TokenInterceptorService } from './shared/token-interceptor.service';
+
+// Components
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { EventsComponent } from './events/events.component';
 import { SpecialEventsComponent } from './special-events/special-events.component';
-
-import { AuthService } from './shared/auth.service';
-import { AuthGuard } from './shared/auth.guard';
-import { EventService } from './shared/event.service';
-import { TokenInterceptorService } from './shared/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +30,8 @@ import { TokenInterceptorService } from './shared/token-interceptor.service';
     LoginComponent,
     RegisterComponent,
     EventsComponent,
-    SpecialEventsComponent
+    SpecialEventsComponent,
+    ConfirmEqualValidatorDirective
   ],
   imports: [
     BrowserModule,
@@ -33,11 +41,16 @@ import { TokenInterceptorService } from './shared/token-interceptor.service';
     ClarityModule,
     BrowserAnimationsModule
   ],
-  providers: [AuthService, AuthGuard, EventService,
-    { provide: HTTP_INTERCEPTORS,
+  providers: [
+    AuthService,
+    AuthGuard,
+    EventService,
+    {
+      provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
-      multi: true }
-    ],
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
