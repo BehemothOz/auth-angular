@@ -16,7 +16,7 @@
     <div class="header-actions">
       <a class="nav-link nav-text" routerLink="/login" *ngIf="!_auth.loggedIn()" routerLinkActive="active">Login</a>
       <a class="nav-link nav-text" routerLink="/register" *ngIf="!_auth.loggedIn()" routerLinkActive="active">Register</a>
-      <a class="nav-link nav-text" *ngIf="_auth.loggedIn()" (click)="_auth.logoutUser()">LogOut</a>
+      <a class="nav-link nav-text nav-text-logout" *ngIf="_auth.loggedIn()" (click)="_auth.logoutUser()">LogOut</a>
     </div>
   </header>
 
