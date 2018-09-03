@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../shared/auth.service';
 import { Router } from '@angular/router';
+import { ClrLoadingState } from '@clr/angular';
 
 @Component({
   selector: 'app-register',
@@ -8,13 +9,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  registerUserData = {};
 
-  registerUserData = {}
+  sendBtnState: ClrLoadingState = ClrLoadingState.DEFAULT;
 
-  constructor(private _auth: AuthService, private _router: Router) { }
+  constructor(private _auth: AuthService, private _router: Router) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   registerUser() {
     console.log(this.registerUserData);
@@ -24,7 +25,7 @@ export class RegisterComponent implements OnInit {
         localStorage.setItem('token', res.token);
         this._router.navigate([`/special`]);
       },
-      err => console.log(err),
-    )
+      err => console.log(err)
+    );
   }
 }

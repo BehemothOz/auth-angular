@@ -6,36 +6,40 @@
       <h5 class="hint">Enter your details to continue</h5>
     </section>
 
+    <div class="login-group">
       <!-- Email -->
-      <!-- <label
-        for="username"
+      <label
+        class="tooltip tooltip-validation invalid tooltip-md"
+        [class.invalid]="refEmail.invalid && (refEmail.dirty || refEmail.touched)"
         aria-haspopup="true"
         role="tooltip"
-        class="tooltip tooltip-validation invalid tooltip-md"
-        [class.invalid]="refUsername.invalid && (refUsername.dirty || refUsername.touched)">
+        for="email"
+      >
         <input
-          #refUsername="ngModel"
-          id="username"
+          #refEmail="ngModel"
+          id="email"
           class="username"
           type="text"
-          name="username"
+          name="email"
           [(ngModel)]="email"
-          pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
           placeholder="Email"
-          required>
+          pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          required
+        >
         <span class="tooltip-content">
-          <span *ngIf="refUsername.errors && refUsername.errors.required">Email is required!</span>
-          <span *ngIf="refUsername.errors && refUsername.errors.pattern">Incorrect symbols are used!</span>
+          <span *ngIf="refEmail.errors && refEmail.errors.required">Email is required!</span>
+          <span *ngIf="refEmail.errors && refEmail.errors.pattern">Incorrect symbols are used!</span>
         </span>
-      </label> -->
+      </label>
 
       <!-- Password -->
-      <!-- <label
+      <label
         for="password"
         aria-haspopup="true"
         role="tooltip"
         class="tooltip tooltip-validation invalid tooltip-md"
-        [class.invalid]="refPassword.invalid && (refPassword.dirty || refPassword.touched)">
+        [class.invalid]="refPassword.invalid && (refPassword.dirty || refPassword.touched)"
+      >
         <input
           #refPassword="ngModel"
           id="password"
@@ -46,20 +50,22 @@
           placeholder="Password"
           minlength="4"
           required
-          (change)="refConfirm.control.updateValueAndValidity()">
+          (change)="refConfirm.control.updateValueAndValidity()"
+        >
         <span class="tooltip-content">
           <span *ngIf="refPassword.errors && refPassword.errors.required">Password is required!</span>
           <span *ngIf="refPassword.errors && refPassword.errors.minlength">At least 4 characters!</span>
         </span>
-      </label> -->
+      </label>
 
       <!-- Re-Password -->
-      <!-- <label
+      <label
         for="confirm"
         aria-haspopup="true"
         role="tooltip"
         class="tooltip tooltip-validation invalid tooltip-md"
-        [class.invalid]="refConfirm.invalid && (refConfirm.dirty || refConfirm.touched)">
+        [class.invalid]="refConfirm.invalid && (refConfirm.dirty || refConfirm.touched)"
+      >
         <input
           #refConfirm="ngModel"
           id="confirm"
@@ -74,12 +80,18 @@
           <span *ngIf="refConfirm.errors && refConfirm.errors.required">Re-Password is required!</span>
           <span *ngIf="refConfirm.errors && refConfirm.errors.notEqual">Passwords no match!</span>
         </span>
-      </label> -->
+      </label>
 
-      <!-- <button class="btn btn-primary" (click)="createUser()" [clrLoading]="sendBtnState"
-        [disabled]="refPhone.invalid || refUsername.invalid || refPassword.invalid || refConfirm.invalid">Next</button> -->
+      <button
+        class="btn btn-primary"
+        (click)="createUser()"
+        [clrLoading]="sendBtnState"
+        [disabled]="refEmail.invalid || refPassword.invalid || refConfirm.invalid"
+      >
+        Next
+      </button>
 
       <a [routerLink]="['/sign-in']" class="signup">Go to sign in</a>
-    <!-- </div> -->
+    </div>
   </form>
 </div>

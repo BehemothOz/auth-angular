@@ -6,8 +6,22 @@
       <h5 class="hint">Enter your details to continuer</h5>
     </section>
     <div class="login-group">
-      <input class="username" type="text" id="login_username" placeholder="Email" name="email" [(ngModel)]="loginUserData.email">
-      <input class="password" type="password" id="login_password" placeholder="Password" name="password" [(ngModel)]="loginUserData.password">
+      <input
+        class="username"
+        type="text"
+        id="login_username"
+        name="email"
+        placeholder="Email"
+        [(ngModel)]="loginUserData.email"
+      >
+      <input
+        class="password"
+        type="password"
+        id="login_password"
+        placeholder="Password"
+        name="password"
+        [(ngModel)]="loginUserData.password"
+      >
 
       <div class="error active" [class.active]="authError">
         Invalid email or password
